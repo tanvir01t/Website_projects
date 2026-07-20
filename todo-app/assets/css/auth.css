@@ -1,0 +1,259 @@
+/* ============================================================
+   assets/css/auth.css
+   Styles for Login / Register pages
+   Glassmorphism + soft shadows + rounded corners
+   ============================================================ */
+
+:root {
+    --color-primary: #6C5CE7;
+    --color-primary-dark: #5849c2;
+    --color-accent: #00CEC9;
+    --color-error: #FF6B6B;
+    --color-success: #00B894;
+    --color-warning: #FDCB6E;
+
+    --bg-gradient: linear-gradient(135deg, #6C5CE7 0%, #00CEC9 100%);
+    --glass-bg: rgba(255, 255, 255, 0.18);
+    --glass-border: rgba(255, 255, 255, 0.35);
+    --text-light: #ffffff;
+    --text-muted: rgba(255, 255, 255, 0.75);
+
+    --radius-lg: 20px;
+    --radius-md: 12px;
+    --shadow-soft: 0 8px 32px rgba(31, 38, 135, 0.25);
+}
+
+[data-theme="dark"] {
+    --bg-gradient: linear-gradient(135deg, #1e1b3a 0%, #0f2b2a 100%);
+    --glass-bg: rgba(20, 20, 35, 0.45);
+    --glass-border: rgba(255, 255, 255, 0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body.auth-body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-gradient);
+    padding: 20px;
+    transition: background 0.4s ease;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+    padding: 40px 32px;
+    color: var(--text-light);
+    animation: fadeSlideUp 0.5s ease;
+}
+
+@keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.auth-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+.auth-logo i { color: var(--color-accent); }
+
+.auth-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 28px;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    color: var(--text-muted);
+}
+
+.form-group .input-wrap {
+    position: relative;
+}
+
+.form-group i.field-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 14px 12px 42px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--glass-border);
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--text-light);
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.form-group input::placeholder { color: rgba(255,255,255,0.5); }
+
+.form-group input:focus {
+    border-color: var(--color-accent);
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.toggle-password {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: var(--text-muted);
+    background: none;
+    border: none;
+}
+
+.field-error {
+    color: #FFD3D3;
+    font-size: 0.78rem;
+    margin-top: 5px;
+    display: none;
+}
+
+.field-error.show { display: block; }
+
+.form-group input.invalid { border-color: var(--color-error); }
+
+.form-row-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: 0.85rem;
+}
+
+.remember-check {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+}
+
+.form-row-between a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-row-between a:hover { text-decoration: underline; }
+
+.btn-auth {
+    width: 100%;
+    padding: 13px;
+    border: none;
+    border-radius: var(--radius-md);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    color: #fff;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 0.98rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-auth:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(0,0,0,0.28); }
+.btn-auth:active { transform: translateY(0); }
+.btn-auth:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+.auth-switch {
+    text-align: center;
+    margin-top: 22px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.auth-switch a { color: var(--color-accent); text-decoration: none; font-weight: 600; }
+.auth-switch a:hover { text-decoration: underline; }
+
+.spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.4);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: none;
+}
+
+.spinner.show { display: inline-block; }
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Toast notifications (shared across app) */
+#toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.toast {
+    min-width: 260px;
+    max-width: 340px;
+    padding: 14px 16px;
+    border-radius: var(--radius-md);
+    color: #fff;
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    animation: toastIn 0.3s ease;
+}
+
+.toast.success { background: var(--color-success); }
+.toast.error   { background: var(--color-error); }
+.toast.info    { background: var(--color-primary); }
+.toast.warning { background: var(--color-warning); color: #4a3700; }
+
+@keyframes toastIn {
+    from { opacity: 0; transform: translateX(40px); }
+    to   { opacity: 1; transform: translateX(0); }
+}
+
+.toast.hide { animation: toastOut 0.3s ease forwards; }
+@keyframes toastOut { to { opacity: 0; transform: translateX(40px); } }
+
+@media (max-width: 480px) {
+    .auth-card { padding: 30px 22px; }
+}
